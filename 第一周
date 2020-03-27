@@ -1,0 +1,54 @@
+                                                                周记
+    听完会议后我意识到自己实在落后太多，师兄们说的项目要求我听蒙圈的，没学过java我完全不知道师兄们描述的是个什么样的东西。所以我只有一个念头，要在最短的
+时间内把java和mysql的基础学下来，到那时我才能理解这个项目是什么样子的，心里才有谱。
+    这两天我尽自己所能把所有闲余时间用在看网课上，目前预计在一个星期内把java和mysql的基础学完，然后再去理解项目需要着重学习做项目需要的那部分知识，边学
+边开始把项目分块来做。                                           
+
+
+                                                                笔记
+    这两天因为比较赶着在学java，没有安排停下来记笔记的时间，只是在自己感觉脑子快被新学的知识挤满的时候赶紧试着敲个程序验证是否掌握这些知识。
+    目前学到java的继承，最开始的java发展史只是听网课老师介绍一遍了解一下。接着是java的关键字，标识符什么的，这些不急，学到哪记到哪。然后是数据类型的问题，
+我C语言基础还可以，这些又大致相同多了个boolean，还有就是各个数据类型占的存储空间和C语言有点差异。然后新学了访问控制符，构造函数，函数的重载，
+static，this指针，再到继承。这些还能接受，问题不是很大。接下来保持这股拼劲，实现目标应该是可以的。
+
+static练习的代码
+
+/*
+ *  Static的练习
+ *  类的静态变量是类本身的成员，可以直接用类访问（自然也可以由类的对象访问）
+ */
+/
+class A{     //这个类只能生成一个对象
+    public int i;
+    private static A aa = new A();
+
+    private A(){
+
+    }
+    public static A getA(){  //调用这个方法访问类的唯一变量
+        return aa;
+    }
+}
+class B{  // 这个类会自动统计生成对象的个数
+    private static int cnt = 0;
+
+    public B(){
+        cnt++;  // 统计类的个数
+    }
+    public static int getCnt(){
+        return cnt;
+    }
+}
+public class TestStatic{
+
+    public static void main(String[] args){
+        // A aa = new A();  error :这个类无法手动生成对象
+        A aa = A.getA();
+        aa.i = 10;
+        System.out.printf("%d", B.getCnt());
+        B bb1 = new B();
+        System.out.printf("%d", B.getCnt());
+        B bb2 = new B();
+        System.out.printf("%d", B.getCnt());
+    }
+}
